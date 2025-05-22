@@ -17,26 +17,36 @@ To write a program to prepare EMI calculator using function without return type 
 ```
 #include <stdio.h>
 #include <math.h>
-
-float emi(float p, float r, int t) {
-    r = r / (12 * 100);
-    return (p * pow(1 + r, t)) / (pow(1 + r, t) - 1);
+void calculateEMI(float principal, float annualRate, int months) {
+    float r = annualRate / (12 * 100); // Convert annual rate to monthly rate
+    float emi;
+    emi = (principal * r * pow(1 + r, months)) / (pow(1 + r, months) - 1);
+    printf("EMI per month = %.2f\n", emi);
 }
 
 int main() {
-    float p, r;
-    int t;
-    printf("Enter principal, rate, months: ");
-    scanf("%f %f %d", &p, &r, &t);
-    printf("EMI = %.2f\n", emi(p, r, t));
+    float principal, rate;
+    int months;
+    printf("Enter principal amount: ");
+    scanf("%f", &principal);
+
+    printf("Enter annual rate of interest (in %%): ");
+    scanf("%f", &rate);
+
+    printf("Enter number of months: ");
+    scanf("%d", &months);
+    calculateEMI(principal, rate, months);
+
     return 0;
 }
+
 
 ```
 
 ## OUTPUT
 
-![image](https://github.com/user-attachments/assets/f97b76c6-9d03-4de1-be89-dedd40a189fa)
+![image](https://github.com/user-attachments/assets/0aa967ab-91c5-4295-9f71-a6c47a11e49f)
+
 
 
 
